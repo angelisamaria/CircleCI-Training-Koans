@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    docker: circleci/node
+    docker: circleci/node:latest
     steps:
       - checkout
       - run:
