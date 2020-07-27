@@ -3,9 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node
-        environment:
-          PGHOST: 127.0.0.1
-          PGUSER: root
+
     
     # Service container image available at `host: localhost`
     
