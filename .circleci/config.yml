@@ -1,21 +1,11 @@
-version: 2.1
+version: 2
 jobs:
   build:
     docker:
       - image: circleci/node
-        environment:
-          PGHOST: 127.0.0.1
-          PGUSER: root
-    
-    # Service container image available at `host: localhost`
-    
-      - image: circleci/postgres:9.6.2-alpine
-        environment:
-          POSTGRES_USER: root
-          POSTGRES_DB: test
     steps:
       - checkout # check out the code in the project directory
-      - run: echo "testing"
+      - run: echo "test" # run the `echo` command
       - run:
           name: install dockerize # This is a utility that will attempt to connect to a database, in place of an application for this sample.
           command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
@@ -24,7 +14,3 @@ jobs:
       - run:
           name: Wait for db # If no database is found in 1 minute the job will fail.
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-workflows:
-  build_and_test:
-    jobs:
-      - build
