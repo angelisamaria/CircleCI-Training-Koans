@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            circleci tests glob "test_hello.sh" "test_goodbye.sh" | xargs -n 1 echo
+            exit 1
 workflows:
   version: 2
   test:
