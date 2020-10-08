@@ -7,14 +7,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Run Hello test
+          name: Run tests
           command: |
-            bash src/test_hello.sh
-      - run:
-          name: Run Goodbye test
-          command: |
-            bash src/test_goodbye.sh
-      
+            circleci tests glob "test_hello.sh" "test_goodbye.sh" | xargs -n 1 echo
 workflows:
   version: 2
   test:
